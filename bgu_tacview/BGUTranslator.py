@@ -4,11 +4,24 @@ from bgu_tacview.Craft import Craft
 
 class BGUTranslator(object):
     def __init__(self, bguFile, id=101):
-        self.data = np.loadtxt(bguFile, delimiter=',', names=True)
+        self.data = np.genfromtxt(bguFile, delimiter=',', 
+                    dtype=(str, str, str, int, int, str, 
+                    int, int, int, int, int, int, int, int, int, int,
+                    int, int, int, int, int, int, int, int, int, int,
+                    int, int, int, int, int, int, int, int, int, int,
+                    int, int, int, int, int, int, int, int, int, int,
+                    int, int, int, int, int, int, int, int, int, int,
+                    int, int, int, int, int, int, int, int, int, int,
+                    int, int, int, int, int, int, int, int, int, int,
+                    int, int, int, int, int, int, int, int, int, int,
+                    int, int, int, int, int, int, int, int, int, int,
+                    int, int, int, int, int, int, int, int, int, int,
+                    int, int, int, int, str),
+                    names=True)
         print(self.data)
+        print(self.data.dtypes.names)
         self.id = id
         self.startTime = self.data['Timestamp'][0]+'z'
-        h, m, s = self.data[' Time'].split(':')
         self.startSecs = self.getSecs(0)
         self.currentOffset = 0
         self.name = self.data[' BGU FW Version'][0]
