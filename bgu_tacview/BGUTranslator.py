@@ -5,6 +5,7 @@ from bgu_tacview.Craft import Craft
 class BGUTranslator(object):
     def __init__(self, bguFile, id=101):
         self.data = np.loadtxt(bguFile, delimiter=',', names=True)
+        print(self.data)
         self.id = id
         self.startTime = self.data['Timestamp'][0]+'z'
         h, m, s = self.data[' Time'].split(':')
